@@ -85,13 +85,7 @@ function updateMarkers() {
     ];
 
     // Fonction pour ajouter les marqueurs sur la carte
-    function addMarkersToMap(restaurants) {
-      restaurants.forEach(restaurant => {
-        L.marker(restaurant.coords)
-          .bindPopup(restaurant.title)
-          .addTo(map);
-      });
-    }
+  
     const btnVegan = document.querySelector('.btn-vegan');
     const btnSansGluten = document.querySelector('.btn-sans-gluten');
     const btnDiet = document.querySelector('.btn-diet');
