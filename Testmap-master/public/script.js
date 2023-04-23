@@ -64,31 +64,89 @@ function updateMarkers() {
 
 
 
+   
+    // Définir les coordonnées et les titres des marqueurs pour chaque type de restaurant
+    const restaurantsVegan = [
+      { coords: [48.8606, 2.3522], title: 'Restaurant Vegan 1' },
+      { coords: [48.8576, 2.3522], title: 'Restaurant Vegan 2' },
+      // Ajouter plus de marqueurs pour les restaurants vegans
+    ];
 
+    const restaurantsSansGluten = [
+      { coords: [48.8586, 2.3522], title: 'Restaurant Sans Gluten 1' },
+      { coords: [48.8556, 2.3522], title: 'Restaurant Sans Gluten 2' },
+      // Ajouter plus de marqueurs pour les restaurants sans gluten
+    ];
 
+    const restaurantsDiet = [
+      { coords: [48.8596, 2.3522], title: 'Restaurant Diet 1' },
+      { coords: [48.8546, 2.3522], title: 'Restaurant Diet 2' },
+      // Ajouter plus de marqueurs pour les restaurants diet
+    ];
 
+    // Fonction pour ajouter les marqueurs sur la carte
+    function addMarkersToMap(restaurants) {
+      restaurants.forEach(restaurant => {
+        L.marker(restaurant.coords)
+          .bindPopup(restaurant.title)
+          .addTo(map);
+      });
+    }
 
+       // Ecouteur d'événement de clic pour le bouton "Restaurant Vegan"
+    btnVegan.addEventListener('click', () => {
+      // Supprimer les marqueurs existants de la carte
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
 
-// créer une icône personnalisée pour un restaurant végétarien sans gluten
-var veggieIcon = L.icon({
-    iconUrl: 'veggie-icon.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [0, -35]
+      // Ajouter les marqueurs des restaurants vegans sur la carte
+      addMarkersToMap(restaurantsVegan);
+    });
+
+    // Ecouteur d'événement de clic pour le bouton "Restaurant Sans Gluten"
+    btnSansGluten.addEventListener('click', () => {
+      // Supprimer les marqueurs existants de la carte
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+
+      // Ajouter les marqueurs des restaurants sans gluten sur la carte
+      addMarkersToMap(restaurantsSansGluten);
+    });
+
+    // Ecouteur d'événement de clic pour le bouton "Restaurant Diet"
+    btnDiet.addEventListener('click', () => {
+      // Supprimer les marqueurs existants de la carte
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+
+      // Ajouter les marqueurs des restaurants diet sur la carte
+      addMarkersToMap(restaurantsDiet);
+    });
+ 
+const restaurantVegan = [
+  { lat: 48.8566, lon: 2.3522, title: "Restaurant Vegan 1" },
+  { lat: 48.8567, lon: 2.3523, title: "Restaurant Vegan 2" },
+  // ...
+];
+
+// Création de l'icône personnalisée pour le marqueur vegan
+const veganIcon = L.icon({
+  iconUrl: '/Testmap-master/img/veggie-icon.png', // Chemin vers le fichier PNG de l'icône
+  iconSize: [32, 32], // Taille de l'icône
 });
 
-// créer une icône personnalisée pour un restaurant diététique
-var dietIcon = L.icon({
-    iconUrl: 'diet-icon.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [0, -35]
-});
+// Création d'un marqueur vegan avec l'icône personnalisée
+const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
+  .addTo(map) // Ajout du marqueur à la carte
+  .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur
 
-// ajouter un marqueur pour un restaurant végétarien sans gluten
-var veggieMarker = L.marker([48.857, 2.347], {icon: veggieIcon}).addTo(mymap);
-veggieMarker.bindPopup("Restaurant végétarien sans gluten");
 
-// ajouter un marqueur pour un restaurant diététique
-var dietMarker = L.marker([48.859, 2.337], {icon: dietIcon}).addTo(mymap);
-dietMarker.bindPopup("Restaurant diététique");

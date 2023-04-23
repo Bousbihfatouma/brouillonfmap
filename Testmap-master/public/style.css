@@ -46,3 +46,22 @@ container{
 .btn.btn-diet {
     background-color: #e74c3c; /* Couleur pour le bouton Restaurant Diet */
 }
+
+
+.container-map-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.map {
+    width: 100%;
+    height: 400px;
+}
+
