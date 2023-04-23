@@ -85,11 +85,17 @@ function updateMarkers() {
     ];
 
     // Fonction pour ajouter les marqueurs sur la carte
-  
+    function addMarkersToMap(restaurants, options) {
+      restaurants.forEach(restaurant => {
+        L.marker(restaurant.coords, options)
+          .bindPopup(restaurant.title)
+          .addTo(map);
+      });
+    }
+
     const btnVegan = document.querySelector('.btn-vegan');
     const btnSansGluten = document.querySelector('.btn-sans-gluten');
     const btnDiet = document.querySelector('.btn-diet');
-
 
        // Ecouteur d'événement de clic pour le bouton "Restaurant Vegan"
     btnVegan.addEventListener('click', () => {
@@ -101,7 +107,7 @@ function updateMarkers() {
       });
 
       // Ajouter les marqueurs des restaurants vegans sur la carte
-      addMarkersToMap(restaurantsVegan,{icon:veganIcon});
+      addMarkersToMap(restaurantsVegan, { icon: veganIcon });
     });
 
     // Ecouteur d'événement de clic pour le bouton "Restaurant Sans Gluten"
@@ -116,7 +122,7 @@ function updateMarkers() {
       // Ajouter les marqueurs des restaurants sans gluten sur la carte
       addMarkersToMap(restaurantsSansGluten);
     });
-    
+
     // Ecouteur d'événement de clic pour le bouton "Restaurant Diet"
     btnDiet.addEventListener('click', () => {
       // Supprimer les marqueurs existants de la carte
@@ -136,7 +142,6 @@ const restaurantVegan = [
   // ...
 ];
 
-
 // Création de l'icône personnalisée pour le marqueur vegan
 const veganIcon = L.icon({
   iconUrl: '/img/veggie-icon.png', // Chemin vers le fichier PNG de l'icône
@@ -144,16 +149,9 @@ const veganIcon = L.icon({
 });
 
 // Création d'un marqueur vegan avec l'icône personnalisée
-const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
-  .addTo(map) // Ajout du marqueur à la carte
-  .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur
+/*
+ const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
+   .addTo(map) // Ajout du marqueur à la carte
+   .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur
+*/
 
-
-// fonctions pour ajouter des marqueurs a la page
-function addMarkersToMap(restaurants,options){
-    restaurants.forEach(restaurant => {
-        L.marker(restaurant.coords, options)
-        bindPopup(restaurant.title)
-        .addTo(map);
-    });
-}
