@@ -107,7 +107,7 @@ function updateMarkers() {
       });
 
       // Ajouter les marqueurs des restaurants vegans sur la carte
-      addMarkersToMap(restaurantsVegan);
+      addMarkersToMap(restaurantsVegan,{icon:veganIcon});
     });
 
     // Ecouteur d'événement de clic pour le bouton "Restaurant Sans Gluten"
