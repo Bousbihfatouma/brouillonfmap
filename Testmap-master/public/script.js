@@ -92,6 +92,10 @@ function updateMarkers() {
           .addTo(map);
       });
     }
+    const btnVegan = document.querySelector('.btn-vegan');
+    const btnSansGluten = document.querySelector('.btn-sans-gluten');
+    const btnDiet = document.querySelector('.btn-diet');
+
 
        // Ecouteur d'événement de clic pour le bouton "Restaurant Vegan"
     btnVegan.addEventListener('click', () => {
@@ -118,7 +122,7 @@ function updateMarkers() {
       // Ajouter les marqueurs des restaurants sans gluten sur la carte
       addMarkersToMap(restaurantsSansGluten);
     });
-
+    
     // Ecouteur d'événement de clic pour le bouton "Restaurant Diet"
     btnDiet.addEventListener('click', () => {
       // Supprimer les marqueurs existants de la carte
@@ -138,9 +142,10 @@ const restaurantVegan = [
   // ...
 ];
 
+
 // Création de l'icône personnalisée pour le marqueur vegan
 const veganIcon = L.icon({
-  iconUrl: '/Testmap-master/img/veggie-icon.png', // Chemin vers le fichier PNG de l'icône
+  iconUrl: '/img/veggie-icon.png', // Chemin vers le fichier PNG de l'icône
   iconSize: [32, 32], // Taille de l'icône
 });
 
@@ -150,3 +155,11 @@ const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
   .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur
 
 
+// fonctions pour ajouter des marqueurs a la page
+function addMarkersToMap(restaurants,options){
+    restaurants.forEach(restaurant => {
+        L.marker(restaurant.coords, options)
+        bindPopup(restaurant.title)
+        .addTo(map);
+    });
+}
