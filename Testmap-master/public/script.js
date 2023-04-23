@@ -1,5 +1,5 @@
 // Creation de la MAP de base
-const map = L.map('map').setView([48.833, 2.333], 7);
+const map = L.map('map').setView([48.833, 2.333], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 30,
@@ -62,34 +62,33 @@ function updateMarkers() {
         });
 }
 
-// On récupère les markers dès le chargement de la page
-updateMarkers();
 
-// --------------------------
 
-// Récupération des élements html
-const modal = document.querySelector('#laModale');
-const inputTitre = document.querySelector('#titre');
-const inputDescription = document.querySelector('#description');
 
-// La variable qui stockera les coordonnées au click
-let selectedCoord;
 
-// La fonction executée au click de la souris sur la map :
-// On sauvegarde les coordonnées en mémoire,
-// Puis on ouvre la modale
-function onMapClick(e) {
-    selectedCoord = e.latlng;
-    modal.showModal();
-}
-map.on('click', onMapClick);
 
-// Quand la modale se ferme, on ajoute le nouveau marker sur la map
-modal.addEventListener('close', function () {
-    console.log(modal.returnValue);
-    if (modal.returnValue !== 'non') {
-        // const newMarker = L.marker([selectedCoord.lat, selectedCoord.lng]).addTo(map);
-        // newMarker.bindPopup("<strong>" + inputTitre.value + "</strong><p>" + inputDescription.value + "</p>");
-        addMarker(inputTitre.value, inputDescription.value, selectedCoord);
-    }
+
+
+// créer une icône personnalisée pour un restaurant végétarien sans gluten
+var veggieIcon = L.icon({
+    iconUrl: 'veggie-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [0, -35]
 });
+
+// créer une icône personnalisée pour un restaurant diététique
+var dietIcon = L.icon({
+    iconUrl: 'diet-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [0, -35]
+});
+
+// ajouter un marqueur pour un restaurant végétarien sans gluten
+var veggieMarker = L.marker([48.857, 2.347], {icon: veggieIcon}).addTo(mymap);
+veggieMarker.bindPopup("Restaurant végétarien sans gluten");
+
+// ajouter un marqueur pour un restaurant diététique
+var dietMarker = L.marker([48.859, 2.337], {icon: dietIcon}).addTo(mymap);
+dietMarker.bindPopup("Restaurant diététique");

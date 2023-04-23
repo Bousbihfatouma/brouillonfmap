@@ -1,0 +1,48 @@
+body{
+    margin:0;
+    padding: 0;
+}
+h1{
+    margin: 50px;
+    text-align: center;
+}
+container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+    padding:20px;
+}
+.map{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn.btn-vegan {
+    background-color: #2ecc71; /* Couleur pour le bouton Restaurant Vegan */
+}
+
+.btn.btn-sans-gluten {
+    background-color: #f1c40f; /* Couleur pour le bouton Restaurant Sans Gluten */
+}
+
+.btn.btn-diet {
+    background-color: #e74c3c; /* Couleur pour le bouton Restaurant Diet */
+}
