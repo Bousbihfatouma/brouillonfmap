@@ -145,13 +145,13 @@ const restaurantVegan = [
 // Création de l'icône personnalisée pour le marqueur vegan
 const veganIcon = L.icon({
   iconUrl: '/img/veggie-icon.png', // Chemin vers le fichier PNG de l'icône
-  iconSize: [32, 32], // Taille de l'icône
+  iconSize: [50, 50], // Taille de l'icône
 });
 
 // Création d'un marqueur vegan avec l'icône personnalisée
-/*
- const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
+
+ /*const markerVegan = L.marker([48.8566, 2.3522], { icon: veganIcon })
    .addTo(map) // Ajout du marqueur à la carte
-   .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur
-*/
+   .bindPopup('Restaurant Vegan 1'); // Ajout d'une info-bulle au marqueur*/
+
 
